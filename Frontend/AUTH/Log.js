@@ -13,3 +13,7 @@ function togglePasswordVisibility() {
         eyeIcon.style.display = "none";
     }
 }
+
+function toggleCheckbox(element) {
+    element.classList.toggle('checked');
+}

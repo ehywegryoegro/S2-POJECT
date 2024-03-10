@@ -39,7 +39,7 @@
 }
 
 .logo {
-    width: 20vw;
+    width: 21vw;
     height: 14.75vh;
     margin-top: 3.6vh;
 }
@@ -53,8 +53,8 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 5.5vw;
-    height: 4.8vh;
+    width: 5vw;
+    height: 4.5vh;
     margin-top: 2.7vh;
 }
 
@@ -79,13 +79,13 @@
 .slider:before {
     position: absolute;
     content: "";
-    height: 4.9vh;
-    width: 2.7vw;
+    height: 4vh;
+    width: 2vw;
     background-color: #F76B56; 
     transition: .4s;
     border-radius: 50%;
-    left: -8px;
-    bottom: -0.55vh;
+    left: -0.6vw;
+    top: -0.3vh;
 }
 
 input:checked + .slider {
@@ -93,7 +93,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(4.7vw);
+    transform: translateX(4vw);
     background-color: #F2EDA2;
 }
 #mdi--eye-off {
@@ -126,7 +126,7 @@ input:checked + .slider:before {
 }
 .toggle-password {
     position: absolute;
-    top: 2.75vh;
+    top: 2.8vh;
     right: 1vw;
     transform: translateY(-50%);
     cursor: pointer;
@@ -166,17 +166,20 @@ input.email, input.pswd {
 
 .forgot-pswd {
     margin-top: 9.35vh;
-    display: inline-flex;
+    display: flex;
+    align-items: center;
+    width: 21.9vw;
 }
-.forgot-pswd > p, a {
-    font-size: 0.75vw;
+.forgot-pswd{
+    font-size: 0.8vw;
     color: #4D4D4D;
+    margin-left: 0.6vw;
 }
 .forgot-pswd > input {
-    margin-right: 0.4vw;
+    margin-right: 0vw;
 }
 .forgot-pswd > a {
-    margin-left: 8.25vw;
+    margin-left: 7.5vw;
     list-style: none;
     color: #4D4D4D;
     text-decoration: underline;
@@ -184,12 +187,54 @@ input.email, input.pswd {
 .login-btn {
     margin-top: 3.7vh;
     width: 21.4vw;
-    height: 4.44vh;
+    height: 4.5vh;
     color: #fff;
     background-image: linear-gradient(to right, #F2EDA2 , #F25D07);
     border: none;
     border-radius: 5px;
-    font-size: 0.85vw;
+    font-size: 8px;
     cursor: pointer;
 }
+.login-btn:hover {
+    background-image: linear-gradient(to right, #F25D07 , #F2EDA2);
+}
+.login-btn:active {
+    background-image: linear-gradient(to right, #F2EDA2 , #F25D07);
+}
 
+.cont {
+    position: relative;
+}
+.check {
+    z-index: 5;
+}
+.check:checked {
+    opacity: 0;
+}
+.check:not(:checked) {
+    opacity: 1;
+}
+.forgot-pswd p {
+    margin-left: 1.5vw;
+}
+.check, .checkbox {
+    position: absolute;
+}
+
+.checkbox {
+    opacity: 0;
+    top: -0.25vh;
+}
+.check:checked + span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url("../Images/Vector.svg");
+    background-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    opacity: 1;
+    border-radius: 4px;
+}
