@@ -28,7 +28,8 @@
     align-items: center;
 }
 
-.image, .image-right {
+.image,
+.image-right {
     width: 100%;
     height: 100vh;
     position: absolute;
@@ -53,7 +54,7 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 5vw;
+    width: 4vw;
     height: 4.5vh;
     margin-top: 2.7vh;
 }
@@ -71,7 +72,7 @@
     left: 0;
     right: 0;
     bottom: 0.55vh;
-    background-color: #F2EDA2; 
+    background-color: #F2EDA2;
     transition: .4s;
     border-radius: 20px;
 }
@@ -81,21 +82,22 @@
     content: "";
     height: 4vh;
     width: 2vw;
-    background-color: #F76B56; 
+    background-color: #F76B56;
     transition: .4s;
     border-radius: 50%;
     left: -0.6vw;
     top: -0.3vh;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: #F76B56;
 }
 
-input:checked + .slider:before {
-    transform: translateX(4vw);
+input:checked+.slider:before {
+    transform: translateX(3vw);
     background-color: #F2EDA2;
 }
+
 #mdi--eye-off {
     display: inline-block;
     width: 1em;
@@ -110,6 +112,7 @@ input:checked + .slider:before {
     mask-size: 100% 100%;
     color: #8EA2B9;
 }
+
 #mdi--eye {
     display: inline-block;
     width: 1em;
@@ -124,6 +127,7 @@ input:checked + .slider:before {
     mask-size: 100% 100%;
     color: #8EA2B9;
 }
+
 .toggle-password {
     position: absolute;
     top: 2.8vh;
@@ -131,14 +135,18 @@ input:checked + .slider:before {
     transform: translateY(-50%);
     cursor: pointer;
 }
+
 .password-input {
     position: relative;
 }
+
 #passwordInput {
     width: calc(100% - 0);
     padding-right: 3vw;
 }
-.email, .pswd {
+
+.email,
+.pswd {
     border-color: #DCD9D9;
     border-style: solid;
     border-radius: 5px;
@@ -146,20 +154,25 @@ input:checked + .slider:before {
     width: 21.3vw;
     height: 5.2vh;
 }
+
 .email-div {
     margin-top: 6.57vh;
 }
+
 .pswd-div {
     margin-top: 2.2vh;
 }
-.pswd-div > p, .email-div > p {
+
+.pswd-div>p,
+.email-div>p {
     font-size: 0.9vw;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 0.75vh;
     color: #4D4D4D;
 }
 
-input.email, input.pswd {
+input.email,
+input.pswd {
     padding: 0.8vw;
     font-size: 0.8vw;
 }
@@ -170,54 +183,66 @@ input.email, input.pswd {
     align-items: center;
     width: 21.9vw;
 }
-.forgot-pswd{
+
+.forgot-pswd {
     font-size: 0.8vw;
     color: #4D4D4D;
     margin-left: 0.6vw;
 }
-.forgot-pswd > input {
+
+.forgot-pswd>input {
     margin-right: 0vw;
 }
-.forgot-pswd > a {
+
+.forgot-pswd>a {
     margin-left: 7.5vw;
     list-style: none;
     color: #4D4D4D;
     text-decoration: underline;
 }
+
 .login-btn {
     margin-top: 3.7vh;
     width: 21.4vw;
     height: 4.5vh;
     color: #fff;
-    background-image: linear-gradient(to right, #F2EDA2 , #F25D07);
+    background-image: linear-gradient(to right, #F2EDA2, #F25D07);
     border: none;
     border-radius: 5px;
     font-size: 8px;
     cursor: pointer;
 }
+
 .login-btn:hover {
-    background-image: linear-gradient(to right, #F25D07 , #F2EDA2);
+    background-image: linear-gradient(to right, #F25D07, #F2EDA2);
 }
+
 .login-btn:active {
-    background-image: linear-gradient(to right, #F2EDA2 , #F25D07);
+    background-image: linear-gradient(to right, #F2EDA2, #F25D07);
 }
 
 .cont {
     position: relative;
 }
+
 .check {
     z-index: 5;
 }
+
 .check:checked {
     opacity: 0;
 }
+
 .check:not(:checked) {
     opacity: 1;
 }
+
 .forgot-pswd p {
     margin-left: 1.5vw;
 }
-.check, .checkbox {
+
+.check,
+.checkbox {
     position: absolute;
 }
 
@@ -225,7 +250,8 @@ input.email, input.pswd {
     opacity: 0;
     top: -0.25vh;
 }
-.check:checked + span {
+
+.check:checked+span {
     display: inline-block;
     width: 14px;
     height: 14px;
