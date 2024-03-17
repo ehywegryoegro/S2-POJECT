@@ -76,9 +76,17 @@
 #number {
     height: 4.6vh;
     width: 2.6vw;
-    border-radius: 5px;
     text-align: center;
     margin: 0 0.9vw;
+    border: none;
+    border-bottom: 1px solid  #ddd;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 form button{
