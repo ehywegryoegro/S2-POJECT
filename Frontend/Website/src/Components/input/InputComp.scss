@@ -1,0 +1,15 @@
+.input-component {
+    display: block;
+    margin: auto;
+    border-radius: 15px;
+    background-color: var(--white-color);
+    border: 1px solid #1F1F1F1A;
+    transition: all 0.3s ease;
+    &:focus {
+        box-shadow: 0px 0px 30px 0px #0000001A;
+        &::placeholder {
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+    }
+}

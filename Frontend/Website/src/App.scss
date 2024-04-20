@@ -1,0 +1,44 @@
+:root {
+    --primary-color: #F4683C;
+    --secondary-color: #00AEEF;
+    --grey-color: #8A8A8A;
+    --white-color: #F9F7F3;
+    --black-color: #1F1F1F;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media ((min-width: 1000px) and (max-width: 1300px)) {
+    .container {
+        width: 85% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media ((max-width: 639px)) {
+    .container {
+        width: 95% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media ((min-width: 768px)) {
+    .container {
+        width: 90% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media ((min-width: 1024px)) {
+    .container {
+        width: 80% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.global-radius {
+    border-radius: 40px;
+}
