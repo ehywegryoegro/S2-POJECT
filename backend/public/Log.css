@@ -5,15 +5,9 @@
     font-family: 'Inter', sans-serif;
 }
 
-<<<<<<< Updated upstream:Frontend/AUTH/Reg.css
-.register-box {
+.login-box {
     height: 85vh;
     width: 29vw;
-=======
-.login-box {
-    height: 85%;
-    width: 60%;
->>>>>>> Stashed changes:Frontend/AUTH/AUTH.css
     background-color: #fff;
     position: absolute;
     z-index: 2;
@@ -104,7 +98,7 @@ input:checked+.slider:before {
     background-color: #F2EDA2;
 }
 
-#mdi--eye-off, #mdi--eye-off1 {
+#mdi--eye-off {
     display: inline-block;
     width: 1em;
     height: 1em;
@@ -119,7 +113,7 @@ input:checked+.slider:before {
     color: #8EA2B9;
 }
 
-#mdi--eye, #mdi--eye1 {
+#mdi--eye {
     display: inline-block;
     width: 1em;
     height: 1em;
@@ -146,8 +140,7 @@ input:checked+.slider:before {
     position: relative;
 }
 
-#passwordInput,
-#confirmPasswordInput {
+#passwordInput {
     width: calc(100% - 0);
     padding-right: 3vw;
 }
@@ -163,19 +156,15 @@ input:checked+.slider:before {
 }
 
 .email-div {
-    margin-top: 2.87vh;
+    margin-top: 6.57vh;
 }
 
 .pswd-div {
-    margin-top: 1.85vh;
-}
-.confirm-pswd-div {
-    margin-top: 1.85vh;
+    margin-top: 2.2vh;
 }
 
 .pswd-div>p,
-.email-div>p,
-.confirm-pswd-div>p {
+.email-div>p {
     font-size: 0.9vw;
     font-weight: 600;
     margin-bottom: 0.75vh;
@@ -188,8 +177,32 @@ input.pswd {
     font-size: 0.8vw;
 }
 
+.forgot-pswd {
+    margin-top: 9.35vh;
+    display: flex;
+    align-items: center;
+    width: 21.9vw;
+}
+
+.forgot-pswd {
+    font-size: 0.8vw;
+    color: #4D4D4D;
+    margin-left: 0.6vw;
+}
+
+.forgot-pswd>input {
+    margin-right: 0vw;
+}
+
+.forgot-pswd>a {
+    margin-left: 7.5vw;
+    list-style: none;
+    color: #4D4D4D;
+    text-decoration: underline;
+}
+
 .login-btn {
-    margin-top: 9vh;
+    margin-top: 3.7vh;
     width: 21.4vw;
     height: 4.5vh;
     color: #fff;
@@ -206,4 +219,48 @@ input.pswd {
 
 .login-btn:active {
     background-image: linear-gradient(to right, #F2EDA2, #F25D07);
+}
+
+.cont {
+    position: relative;
+}
+
+.check {
+    z-index: 5;
+}
+
+.check:checked {
+    opacity: 0;
+}
+
+.check:not(:checked) {
+    opacity: 1;
+}
+
+.forgot-pswd p {
+    margin-left: 1.5vw;
+}
+
+.check,
+.checkbox {
+    position: absolute;
+}
+
+.checkbox {
+    opacity: 0;
+    top: -0.25vh;
+}
+
+.check:checked+span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url("../Images/Vector.svg");
+    background-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    opacity: 1;
+    border-radius: 4px;
 }

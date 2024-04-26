@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stripe Checkout</title>
+  <style>
+    /* Simple CSS for styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      margin: 0 auto;
+    }
+    input[type="text"], input[type="number"], input[type="email"] {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Checkout</h2>
+
+<form id="checkoutForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  
+  <label for="cardNumber">Card Number:</label>
+  <input type="text" id="cardNumber" name="cardNumber" required>
+  
+  <label for="expiry">Expiry (MM/YY):</label>
+  <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+  
+  <label for="cvc">CVC:</label>
+  <input type="text" id="cvc" name="cvc" required>
+
+  <input type="submit" value="Pay">
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  var stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY');
+
+  document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var cardNumber = document.getElementById('cardNumber').value;
+    var expiry = document.getElementById('expiry').value;
+    var cvc = document.getElementById('cvc').value;
+    
+    // Create a Stripe token
+    stripe.createToken('card', {
+      name: name,
+      email: email,
+      card: {
+        number: cardNumber,
+        exp_month: expiry.split('/')[0].trim(),
+        exp_year: expiry.split('/')[1].trim(),
+        cvc: cvc
+      }
+    }).then(function(result) {
+      if (result.error) {
+        console.error('Stripe token error:', result.error);
+        alert('An error occurred. Please try again.'); // Show error message
+      } else {
+        // Send token to server for processing
+        var stripeTokenId = result.token.id;
+        var items = []; // Fill this with items to be purchased
+        var formData = { items: items, stripeTokenId: stripeTokenId };
+
+        // Make a POST request to backend endpoint
+        fetch('/card/purchase', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.message) {
+            alert(data.message); // Show success message
+            // Optionally, you can redirect or perform any other action here
+          } else {
+            alert('Error: ' + data.error || data.message); // Show error message
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error); // Log any errors
+          alert('An error occurred. Please try again.'); // Show generic error message
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

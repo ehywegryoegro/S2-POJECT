@@ -3,10 +3,10 @@
 
 <head>
     <title>Biblos</title>
-    <link rel="stylesheet" href="./Log.css">
+    <link rel="stylesheet" href="../public/Reg.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="./Log.js"></script>
+    <script src="./Reg.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -14,13 +14,13 @@
 
 <body>
     <div class="box">
-        <div class="login-box">
-            <img src="../Images/image 1.svg" class="logo" alt="Biblos logo">
+        <div class="register-box">
+            <img src="../public/image 1.svg" class="logo" alt="Biblos logo">
             <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" checked>
                 <span class="slider"></span>
             </label>
-            <p class="welcome-text">Welcome Back !</p>
+            <p class="welcome-text">Registration</p>
             <div class="email-div">
                 <p>Email</p>
                 <input placeholder="exemple@gmail.com" class="email" type="email" required>
@@ -35,27 +35,23 @@
                     </span>
                 </div>
             </div>
-            <div class="forgot-pswd">
-                <div class="remeberme">
-                    <div class="cont">
-                        <input type="checkbox" class="check" name="" checked>
-                        <span class="checkbox" onclick="toggleCheckbox(this)"></span>
-                    </div>
-                    <p>Remember me</p>
+            <div class="confirm-pswd-div">
+                <p>Confirm Password</p>
+                <div class="password-input">
+                    <input id="confirmPasswordInput" class="pswd" type="password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility1()">
+                        <span id="mdi--eye-off1"></span>
+                        <span id="mdi--eye1" style="display: none;"></span>
+                    </span>
                 </div>
-                <a href="" target="_blank">Forgot password?</a>
             </div>
             <div>
-                <button onclick="validateLogin()" class="login-btn" type="submit">Login</button>
+                <button onclick="validateLogin()" class="login-btn" type="submit">Register</button>
             </div>
         </div>
-        <img src="../Images/Vector 2.png" class="image" alt="">
-        <img src="../Images/Vector 1.png" class="image-right" alt="">
-<<<<<<< Updated upstream:Frontend/AUTH/Log.html
+        <img src="../public/Vector 2.png" class="image" alt="">
+        <img src="../public/Vector 1.png" class="image-right" alt="">
     </div>
-=======
-        </div>
->>>>>>> Stashed changes:Frontend/AUTH/AUTH.html
 </body>
 
 </html>

@@ -4,16 +4,13 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
-
-<<<<<<< Updated upstream:Frontend/AUTH/Reg.css
-.register-box {
-    height: 85vh;
-    width: 29vw;
-=======
 .login-box {
     height: 85%;
     width: 60%;
->>>>>>> Stashed changes:Frontend/AUTH/AUTH.css
+}
+.register-box {
+    height: 85vh;
+    width: 29vw;
     background-color: #fff;
     position: absolute;
     z-index: 2;
