@@ -15,7 +15,6 @@ export default function HomePage() {
                             <Header />
                             <Outlet />
                         </div>
-
                     </div>
                 </div>
             </div>

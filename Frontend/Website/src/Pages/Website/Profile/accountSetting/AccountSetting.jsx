@@ -16,22 +16,6 @@ export default function AccountSetting() {
             <img src={require('../../../../assets/avatar.png')} className='mx-auto my-3' alt="" />
             <span className='upload'>Upload New photo</span>
           </div>
-          <div className="info flex flex-col md:flex-row gap-3">
-            <div className="reading p-4 text-white">
-              <div className='flex gap-3'>
-                <img src={require('../../../../assets/book.svg')} alt="" />
-                <span className='text-2xl mt-1'>120</span>
-              </div>
-              <p className='text-xl'>Reading</p>
-            </div>
-            <div className="contribution p-4 text-white">
-              <div className='flex gap-3'>
-                <img src={require('../../../../assets/hand.svg')} alt="" />
-                <span className='text-2xl mt-1'>10</span>
-              </div>
-              <p className='text-xl'>Contribution</p>
-            </div>
-          </div>
         </div>
         <div className="form">
 
@@ -58,13 +42,12 @@ export default function AccountSetting() {
               <label htmlFor="bio" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bio</label>
               <textarea id="bio" className="resize-none	bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none min-h-32" placeholder="I'm a Student" required />
             </div>
-
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 mb-6 gap-3">
               <button type="submit" className="text-white bg-[#F4683C] hover:bg-[#f4683ccc] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Update Profile</button>
               <button type="reset" className="text-black font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center">Reset</button>
             </div>
           </form>
-
         </div>
       </motion.div>
     </>

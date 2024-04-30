@@ -9,6 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    //user-select: none;
 }
 @media ((min-width: 1000px) and (max-width: 1300px)) {
     .container {

@@ -5,27 +5,27 @@
     font-family: 'Inter', sans-serif;
 }
 
-.login-box {
-    height: 85vh;
-    width: 29vw;
-    background-color: #fff;
-    position: absolute;
-    z-index: 2;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 7px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-}
-
 .box {
-    position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.login-box {
+    height: 90vh;
+    background-color: #fff;
+    z-index: 4;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    @media (min-width: 400px) and (max-width: 640px) {
+        width: 70% !important;
+    }
 }
 
 .image,
@@ -46,8 +46,6 @@
 }
 
 .welcome-text {
-    font-size: 1vw;
-    margin-top: 6.55vh;
     color: #4D4D4D;
 }
 
@@ -130,19 +128,22 @@ input:checked+.slider:before {
 
 .toggle-password {
     position: absolute;
-    top: 2.8vh;
+    top: 50%;
     right: 1vw;
     transform: translateY(-50%);
     cursor: pointer;
 }
 
-.password-input {
-    position: relative;
+.toggle-password span {
+    display: none;
 }
 
-#passwordInput {
-    width: calc(100% - 0);
-    padding-right: 3vw;
+.toggle-password span:last-child {
+    display: inline-block;
+}
+
+.password-input {
+    position: relative;
 }
 
 .email,
@@ -165,7 +166,6 @@ input:checked+.slider:before {
 
 .pswd-div>p,
 .email-div>p {
-    font-size: 0.9vw;
     font-weight: 600;
     margin-bottom: 0.75vh;
     color: #4D4D4D;
@@ -174,88 +174,88 @@ input:checked+.slider:before {
 input.email,
 input.pswd {
     padding: 0.8vw;
-    font-size: 0.8vw;
 }
 
-.forgot-pswd {
-    margin-top: 9.35vh;
+.remeberme {
     display: flex;
     align-items: center;
-    width: 21.9vw;
 }
+
+.remeberme > input {
+    margin-right: 0.5vw;
+}
+
+.remeberme label {
+    margin-left: 0.1vw;
+    cursor: pointer;
+}
+
 
 .forgot-pswd {
-    font-size: 0.8vw;
-    color: #4D4D4D;
-    margin-left: 0.6vw;
+    margin-top: 9vh;
+    display: flex;
+    align-items: center;
+    width: 21.3vw;
 }
 
-.forgot-pswd>input {
-    margin-right: 0vw;
-}
-
-.forgot-pswd>a {
-    margin-left: 7.5vw;
+.forgot-pswd a {
+    font-size: 10px;
+    margin-left: auto;
     list-style: none;
     color: #4D4D4D;
     text-decoration: underline;
+}
+
+.forgot-pswd a:hover {
+    color: #F25D07;
+    background-position: 0 0;
+    transition: 0.5s;
+}
+
+.forgot-pswd a:not(:hover) {
+    transition: background-position 0.4s, color 0.5s;
 }
 
 .login-btn {
     margin-top: 3.7vh;
     width: 21.4vw;
     height: 4.5vh;
-    color: #fff;
-    background-image: linear-gradient(to right, #F2EDA2, #F25D07);
+    color: #000;
+    background-image: linear-gradient(to right, #F2EDA2, #F25D07) !important;
     border: none;
     border-radius: 5px;
     font-size: 8px;
     cursor: pointer;
+    transition: background-image 0.3s;
 }
 
 .login-btn:hover {
     background-image: linear-gradient(to right, #F25D07, #F2EDA2);
 }
 
-.login-btn:active {
-    background-image: linear-gradient(to right, #F2EDA2, #F25D07);
-}
-
-.cont {
-    position: relative;
-}
-
-.check {
-    z-index: 5;
-}
-
 .check:checked {
-    opacity: 0;
+    opacity :80;  
 }
 
 .check:not(:checked) {
-    opacity: 1;
+    opacity: 80;
 }
 
 .forgot-pswd p {
     margin-left: 1.5vw;
-}
-
-.check,
-.checkbox {
-    position: absolute;
+    
 }
 
 .checkbox {
     opacity: 0;
-    top: -0.25vh;
 }
+
 
 .check:checked+span {
     display: inline-block;
     width: 14px;
     height: 14px;
-    background-image: url("../Website/Images/Vector.svg");
+    background-image: url(../../../../assets/Vector.svg);
     background-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
@@ -263,4 +263,17 @@ input.pswd {
     mask-size: 100% 100%;
     opacity: 1;
     border-radius: 4px;
+}
+
+.check {
+    display: none;
+}
+
+.remeberme label:hover {
+    background-position: 0 0;
+    color: #F25D07;
+    transition: 0.5s;
+}
+.remeberme label:not(:hover) {
+    transition: background-position 0.4s, color 0.5s;
 }
