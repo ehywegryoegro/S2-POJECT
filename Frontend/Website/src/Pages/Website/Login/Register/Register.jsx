@@ -26,7 +26,7 @@ function RegisterPage() {
 
   return (
     <>
-      <div className="box">
+      <div className="boxR">
         <div className="login-box w-screen sm:w-1/2 md:w-1/2 lg:w-1/3 px-10 lg:px-24 py-5">
           <img className="logo" src={require("../../../../assets/Logo.svg")} alt="" ></img>
           <label className="switch">
@@ -35,8 +35,8 @@ function RegisterPage() {
           </label>
           <p className="welcome-text text-xs mt-5">Welcome Back !</p>
           <div className="email-div w-full">
-            <p className='text-xs'>Username</p>
-            <input placeholder="Username" name="email" className="email text-xs w-full" type="text" required />
+            <p className='text-xs'>Email</p>
+            <input placeholder="exemple@gmail.com" name="email" className="email text-xs w-full" type="text" required />
           </div>
           <div className="pswd-div w-full">
             <p className='text-xs'>Password</p>

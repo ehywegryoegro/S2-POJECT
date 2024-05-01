@@ -11,7 +11,7 @@ import Login from './Pages/Website/Login/Login/Login';
 import RegisterPage from './Pages/Website/Login/Register/Register';
 import BookPreview from './Pages/Website/bookPreview/BookPreview';
 import OtpPage from './Pages/Website/Login/Otp/OtpPage';
-import VerifPage from './Pages/Website/Login/Verif/Verif';
+import VerifPage from './Pages/Website/Login/Verif/VerifPage';
 
 
 function App() {
