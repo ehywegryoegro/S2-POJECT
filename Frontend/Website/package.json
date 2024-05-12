@@ -9,9 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start": "vite"
-    
   },
-  
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
@@ -25,7 +23,7 @@
     "react-router-dom": "^6.22.3",
     "sass": "^1.72.0",
     "swiper": "^11.1.1",
-    "vite-plugin-require": "^1.1.14"
+    "vite-plugin-require": "^0.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",
@@ -44,5 +42,4 @@
   "main": "postcss.config.js",
   "author": "",
   "license": "ISC"
-  
 }

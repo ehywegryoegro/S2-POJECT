@@ -21,14 +21,15 @@ function LoginPage() {
   const handleSwitchClick = () => {
     window.location.href = '/register';
   };
-   
+
   const handleButton = () => {
     window.location.href = '/';
   };
 
   return (
     <>
-      <div className="boxxxx">
+      <div className="login-container">
+        <div className="boxxxx">
           <div className="login-box w-screen sm:w-1/2 md:w-1/2 lg:w-1/3 px-10 lg:px-24 py-5">
             <img className="logo" src={require("../../../../assets/Logo.svg")} alt="" ></img>
             <label className="switch">
@@ -63,8 +64,9 @@ function LoginPage() {
               <button onClick={handleButton} className='login-btn text-xs w-full' type='submit'>Login</button>
             </div>
           </div>
-        <img className="image" src={require("../../../../assets/BGVector.png")} alt="" ></img>
-        <img className="image-right" src={require("../../../../assets/Vector 1.png")} alt="" ></img>
+          <img className="image" src={require("../../../../assets/BGVector.png")} alt="" ></img>
+          <img className="image-right" src={require("../../../../assets/Vector 1.png")} alt="" ></img>
+        </div>
       </div>
     </>
   );

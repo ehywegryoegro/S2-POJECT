@@ -18,19 +18,18 @@ export default function AccountSetting() {
           </div>
         </div>
         <div className="form">
-
           <form>
             <div className="grid gap-6 mb-6 grid-cols-1 md:grid-cols-2">
               <div>
-                <label htmlFor="full_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
+                <label htmlFor="full_name" className="block mb-2 text-sm font-medium text-gray-900">Full Name</label>
                 <input type="text" id="full_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none" placeholder="Name Name" required />
               </div>
               <div>
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
                 <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none" placeholder="Exemple@gmail.com" required />
               </div>
               <div>
-                <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
+                <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 ">Phone number</label>
                 <div className="flex">
                   <button type='text' disabled style={{ borderRadius: '0.5rem 0 0 0.5rem' }} className='border border-gray-300 text-gray-900 text-sm px-2'>+213</button>
                   <input style={{ borderRadius: '0 0.5rem 0.5rem 0' }} type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none" placeholder="785 96 00 00" pattern="[0-9]{9}" required />
@@ -39,7 +38,7 @@ export default function AccountSetting() {
 
             </div>
             <div className="mb-6">
-              <label htmlFor="bio" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bio</label>
+              <label htmlFor="bio" className="block mb-2 text-sm font-medium text-gray-900 ">Bio</label>
               <textarea id="bio" className="resize-none	bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 outline-none min-h-32" placeholder="I'm a Student" required />
             </div>
             
