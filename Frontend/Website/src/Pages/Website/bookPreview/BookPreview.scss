@@ -1,0 +1,206 @@
+.book-preview-container {
+    background-color: #FFFAE3;
+    min-height: 100vh;
+    padding: 2rem;
+
+    .book-preview-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .back-button {
+            color: #4A5568;
+            margin-bottom: 1rem;
+            &:hover {
+                color: #1A202C;
+            }
+        }
+
+        .book-preview-main {
+            display: flex;
+            flex-direction: column;
+
+            @media (min-width: 1024px) {
+                flex-direction: row;
+            }
+
+            .left-section {
+                flex: 1;
+
+                .book-cover {
+                    img {
+                        width: 60%;
+                        border-radius: 0.5rem;
+                    }
+                }
+            }
+
+            .right-section {
+                flex: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+
+                @media (min-width: 1024px) {
+                    flex-direction: row;
+                    gap: 4rem;
+                }
+
+                .book-info {
+                    flex: 2;
+
+                    .book-title {
+                        font-size: 2rem;
+                        font-weight: bold;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .book-author {
+                        color: #4A5568;
+                        margin-bottom: 0.5rem;
+
+                        .author-link {
+                            color: #DD6B20;
+                        }
+                    }
+
+                    .book-edition {
+                        color: #4A5568;
+                        margin-bottom: 1rem;
+                    }
+
+                    .ratings {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 1rem;
+
+                        .stars {
+                            color: #D69E2E;
+                        }
+
+                        .ratings-info, .readers-info {
+                            color: #4A5568;
+                            margin-left: 0.5rem;
+                        }
+
+                        .readers-info {
+                            margin-left: 1rem;
+                        }
+                    }
+
+                    .availability-status {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 1rem;
+
+                        @media (min-width: 768px) {
+                            flex-direction: row;
+                        }
+
+                        .availability, .status {
+                            margin-right: 2rem;
+
+                            .availability-label, .status-label {
+                                color: #4A5568;
+                            }
+
+                            .availability-item, .status-value {
+                                color: #0fc256;
+                            }
+                        }
+
+                        .add-to-list {
+                            .add-to-list-button {
+                                background-color: #2D3748;
+                                color: #FFFFFF;
+                                padding: 0.5rem 1rem;
+                                border-radius: 0.25rem;
+                            }
+                        }
+                    }
+
+                    .read-now-button {
+                        // background-color: #38A169;
+                        color: #FFFFFF;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 0.25rem;
+                    }
+                }
+
+                .about-author {
+                    flex: 1;
+
+                    .section-title {
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        margin-bottom: 1rem;
+                    }
+
+                    .author-description {
+                        color: #4A5568;
+                    }
+
+                    .other-books-title {
+                        margin-top: 1rem;
+                        font-size: 1.125rem;
+                        font-weight: 600;
+                    }
+
+                    .other-books {
+                        display: flex;
+                        gap: 1rem;
+
+                        .other-book-cover {
+                            width: 4rem;
+                            border-radius: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .additional-info, .details-reviews {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+
+            @media (min-width: 1024px) {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .overview, .book-details, .community-reviews {
+                flex: 1;
+                margin-top: 2rem;
+
+                @media (min-width: 1024px) {
+                    margin-top: 0;
+                }
+
+                .section-title {
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                }
+
+                .overview-description, .detail-item, .review-item {
+                    color: #4A5568;
+                }
+
+                .detail-value, .review-value {
+                    color: #1A202C;
+                }
+
+                .feedback-button {
+                    color: #DD6B20;
+                    &:hover {
+                        color: #C05621;
+                    }
+                }
+            }
+        }
+    }
+}

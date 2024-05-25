@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+.rectangle{
+    height: 85%;
+    width: 29%;
+    background-color: #fff;
+    z-index: 5;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    display: flex;
+    position: absolute;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.elements {
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 22vw;
+}
+.box {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image, .image-right {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
+.image {
+    z-index: 1;
+}
+.logo {
+    width: 21vw;
+    height: 14.75vh;
+    margin-top: 3.6vh;
+}
+.p1 {
+    font-size: 1.1vw;
+    margin-top: 0.92vh;
+    color: #4D4D4D;
+}
+.p2 {
+    font-size: 0.7vw;
+    margin-top: 1.45vh;
+    color: #4D4D4D;
+    opacity: 0.7;
+}
+.p3 {
+    font-size: 0.9vw;
+    margin-top: 5.4vh;
+    color: #4D4D4D;
+    font-weight: bolder;
+    text-align: left;
+    margin-right: 13.25vw;
+}
+.input-field {
+    margin-top: 7vh;
+    font-size: 0.9vw;
+    color: #4D4D4D;
+    outline: none;
+    margin-left: -1vw !important;
+}
+#number {
+    height: 4.6vh;
+    width: 2.6vw;
+    text-align: center;
+    margin: 0 0.9vw;
+    border: none;
+    border-bottom: 1px solid  #ddd;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+form button{
+    margin-top: 7.4vh;
+    width: 21.4vw;
+    height: 4.5vh;
+    color: #fff;
+    background-image: linear-gradient(to right, #F2EDA2 , #F25D07);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9vw;
+    cursor: pointer;
+    
+}
+form button{
+    background-image: linear-gradient(to right, #F2EDA2, #F25D07);
+    width: 22vw;
+}
+form button:hover {
+    background-image: linear-gradient(to right, #F25D07 , #F2EDA2);
+}
+form button:active {
+    background-image: linear-gradient(to right, #F2EDA2 , #F25D07);
+}
+.bottom {
+    display: flex;
+    margin-top: 7.2vh;
+    position: relative;
+    align-self: flex-start;
+    width: 22vw;
+    align-items: center;
+    flex-direction: row;
+}
+.resend {
+    font-size: 0.85vw;
+    color: #4D4D4D;
+    margin-right: 10.25vw;
+}
+.resend1 {
+    font-size: 0.8vw;
+    color: #4D4D4D;
+    align-self: flex-end;
+}
+a {
+    color: #4D4D4D;
+}
+
+    
+

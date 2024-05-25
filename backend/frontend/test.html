@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management System</title>
+</head>
+<body>
+    <h1>Book Management System</h1>
+
+    <h2>Add New Book</h2>
+    <form id="addBookForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required><br>
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea><br>
+
+        <label for="availability">Availability:</label>
+        <input type="hidden" id="availability" name="availability" value="true">
+
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required><br>
+
+        <label for="bookFile">Book File:</label>
+        <input type="file" id="bookFile" name="bookFile" required><br>
+
+        <label for="coverImage">Cover Image:</label>
+        <input type="file" id="coverImage" name="coverImage" required><br>
+
+        <button type="submit">Add Book</button>
+    </form>
+
+    <script>
+        document.getElementById('addBookForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/books/addbook', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('Book added successfully');
+                    this.reset();
+                } else {
+                    const errorMessage = await response.text();
+                    alert(`Failed to add book: ${errorMessage}`);
+                }
+            } catch (error) {
+                console.error('Error adding book:', error);
+                alert('An error occurred while adding the book. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

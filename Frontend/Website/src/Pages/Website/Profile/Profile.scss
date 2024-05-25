@@ -1,0 +1,22 @@
+.body {
+    .page {
+        .cont {
+            .right {
+                .boxxx1 {
+                    background-color: #fff;
+                    .navlink {
+                        a {
+                            color: #717B8C;
+                            border-bottom: 2px solid transparent;
+                            &:hover, &.active {
+                                color: var(--primary-color);
+                                border-bottom: 2px solid var(--primary-color);
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}

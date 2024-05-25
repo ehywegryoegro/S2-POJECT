@@ -1,0 +1,37 @@
+.sidebar {
+    width: 250px;
+    box-shadow: 0px 0px 25px #f1d5997a;
+    z-index: 20;
+    display: block;
+    @media (max-width: 767px) {
+        display: none !important;
+    }
+    .top {
+        position: sticky;
+        top: 0;
+        .nav {
+            li {
+                a {
+                    color: var(--grey-color);
+                    transition: all 0.3s ease;
+                    a.active {
+                        color: var(--primary-color);
+                    }
+                    &:hover {
+                        color: var(--primary-color);
+                    }
+                }
+            }
+        }
+    }
+    .bottom {
+        a {
+            &:hover {
+                color: var(--primary-color) !important;
+            }
+            @media (max-width: 767px) {
+                display: none;
+            }
+        }
+    }
+}

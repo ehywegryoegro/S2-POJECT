@@ -1,0 +1,99 @@
+// /* NotFound.scss */
+// .not-found-container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh;
+//     background-image: url('../assets/404/pexels-nitin-arya-386173-1029141.jpg'); /* Add your image path here */
+//     background-size: cover;
+//     background-position: center;
+//     color: white;
+//     text-align: center;
+//   }
+  
+//   .not-found-content {
+//     background-color: rgba(0, 0, 0, 0.5); /* Adds a semi-transparent background to the text for better readability */
+//     padding: 20px;
+//     border-radius: 10px;
+//   }
+  
+//   .not-found-content h1 {
+//     font-size: 3rem;
+//   }
+  
+//   .not-found-content p {
+//     font-size: 1.5rem;
+//   }
+  
+//   .not-found-content a {
+//     color: rgb(222, 220, 206);
+//     text-decoration: none;
+//     font-size: 1.2rem;
+//     margin-top: 20px;
+//     display: inline-block;
+//     padding: 10px 20px;
+//     background-color: #2021223d;
+//     border-radius: 5px;
+//     transition: background-color 0.3s;
+//   }
+  
+//   .not-found-content a:hover {
+//     background-color: #505255;
+//   }
+  
+
+
+/* Main container aligning content to center vertically and horizontally */
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff8e1; /* Matching the light yellow background of the main content */
+  color: #333; /* General text color */
+}
+
+/* Styling for the 404 content box */
+.not-found-content {
+  text-align: center;
+  background-color: #fff; /* White background for the content box */
+  padding: 40px;
+  border-radius: 10px; /* Rounded corners matching the design */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow to lift the content */
+}
+
+/* Styling for the 404 error code */
+.not-found-content h1 {
+  font-size: 96px;
+  margin-bottom: 20px;
+  color: #ff6f61; /* Using the same orange color as the logo */
+}
+
+/* Styling for the secondary header */
+.not-found-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* Styling for the descriptive text */
+.not-found-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #666; /* Slightly lighter color for contrast */
+}
+
+/* Styling for the home link button */
+.home-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff6f61; /* Orange button matching the logo color */
+  padding: 10px 20px;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for the home link button */
+.home-link:hover {
+  background-color: #e85b50; /* Slightly darker orange for hover */
+}

@@ -1,0 +1,176 @@
+// PaymentForm.scss
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+.payment-form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.payment-form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 59px;
+  width: 478px;
+  height: 748px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.payment-form h2 {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.payment-form .card-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  
+
+}
+.payment-form .card-image img{
+  border-radius: 6px;
+}
+.payment-form .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.payment-form .form-group label {
+  display: block;
+  margin-bottom: 0px;
+  font-weight: 400px;
+  font-size: 12px;
+  color: #747474;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.payment-form .form-group input {
+  width: calc(100% - 20px);
+  padding: 5px;
+  margin: 5px 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold ;
+  color:black;
+}
+
+.payment-form .form-group .elements {
+  width: calc(100% - 20px);
+  padding: 5px;
+  margin: 5px 0;
+  border: none;
+  margin-top: 5px;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+  font-weight: 1000px;
+  color:black;
+}
+
+.payment-form .form-check{
+  display: flex;
+  align-items: center;
+
+}
+.payment-form .form-check label{
+  font-weight: 400px;
+  font-size: 12px;
+  color: #74747499;
+}
+.payment-form .form-check input{
+  margin-top: 1px;
+  
+ 
+
+}
+// .payment-form .form-check input:checked {
+//   background-color: #4E3EB3; /* Change this to your desired color */
+//   border-color: #4E3EB3; /* Ensure the border matches the background when checked */
+// }
+.payment-form .form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-form .form-row .form-group {
+  width: 48%;
+}
+
+
+#saveCard{
+  color :black;
+}
+// .payment-form .checkbox {
+//   display: flex;
+//   align-items: center;
+//   margin-bottom: 10px;
+// }
+// .payment-form .checkbox label {
+//   margin-left: 5px; /* Adjust as needed */
+//   color: black;
+// }
+
+// .payment-form .checkbox input[type="checkbox"] {
+//   margin-right: 10px;
+//   display: inline-block;
+//   width: auto;
+//   color :black;
+// }
+
+.payment-form .divider {
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 20px 0;
+}
+
+.payment-form .total-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-form .total {
+  font-weight:bold;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: #5F5F5F;
+}
+
+.payment-form .pay-button {
+  background-color: #f55c4e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+

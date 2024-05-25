@@ -1,0 +1,28 @@
+.account-setting {
+    .information {
+        .profile-picture {
+            img {
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+            }
+            .upload {
+                font-size: 10px;
+                color: #909090;
+                border-bottom: 1px solid #909090;
+                cursor: pointer;
+            }
+        }
+        .info {
+            .reading {
+                background-color: #F27851;
+                border-radius: 10px;
+            }
+            .contribution {
+                min-width: 150px;
+                background-color: #926CFF;
+                border-radius: 10px;
+            }
+        }
+    }
+}
