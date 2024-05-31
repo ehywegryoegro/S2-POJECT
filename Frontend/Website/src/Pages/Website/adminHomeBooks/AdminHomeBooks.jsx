@@ -12,7 +12,7 @@ export default function AdminHomeBooks() {
                 <span className='items-center'>
                     <NavLink to={'addbook'}>
                         <button className='flex items-center justify-center bg-white text-red py-1 w-36 rounded-3xl' style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}>
-                            <img src={require("../../../assets/addBook.svg")} alt="" className="mr-28 w-10 h-10 mr-3 absolute" />
+                            <img src={require("../../../assets/addBook.svg")} alt="" className="mr-28 w-10 h-10 absolute" />
                             <p className='ml-5'>Add Book</p>
                         </button>
                     </NavLink>
@@ -47,7 +47,7 @@ export default function AdminHomeBooks() {
                     </p>
                     <div className="flex flex-col box-border mt-2">
                         <div className="inline-block break-words font-['Inter'] font-normal leading-[1.285] text-sm text-[#4D4D4D] mt-2 mb-3">Computer Science</div>
-                        <span className="self-start break-words font-['Inter'] font-normal text-base leading-[1.285] text-xs text-[#4D4D4D]">UX Design</span>
+                        <span className="self-start break-words font-['Inter'] font-normal leading-[1.285] text-xs text-[#4D4D4D]">UX Design</span>
                     </div>
                 </div>
                 <div className="my-4 flex flex-row justify-between box-border">
@@ -64,7 +64,7 @@ export default function AdminHomeBooks() {
                     <div className="mt-6 ml-10 justify-center box-border">
                         <div className="rounded-md relative flex flex-row justify-center ml-16 box-border">
                             <span className="break-words font-['Inter'] font-normal text-sm text-[#FFFFFF]">
-                                <NavLink>
+                                <NavLink to="/admin/addbook">
 
                                     <button className='flex items-center justify-center bg-orange-600 text-white py-1 w-24 rounded-md border-solid border border-orange-600' style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}>
                                         <img src={require("../../../assets/edit.svg")} alt="" className="w-5 h-5 mr-3 " />

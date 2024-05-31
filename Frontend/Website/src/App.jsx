@@ -24,6 +24,9 @@ import ShoppingCart from './Pages/Website/shoppingCart/ShoppingCart';
 import AdminHomePage from './Pages/Website/adminHomePage/AdminHomePage';
 import AdminHomeBooks from './Pages/Website/adminHomeBooks/AdminHomeBooks';
 import AddBook from './Pages/Website/addBook/AddBook';
+import Command from './Pages/Website/command/Command';
+import Dashboard from './Pages/Website/Dashboard/Dashboard';
+import Users from './Pages/Website/Users/Users';
 
 export default function App() {
   return (
@@ -58,6 +61,9 @@ export default function App() {
         <Route path='/admin' element={<AdminHomePage/>}>
           <Route index element={<AdminHomeBooks/>} />
           <Route path='addbook' element={<AddBook />} />
+          <Route path='command' element={<Command />} />
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='users' element={<Users />} />
         </Route>
       </Routes>
     </>

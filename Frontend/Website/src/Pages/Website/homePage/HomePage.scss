@@ -1,12 +1,14 @@
 .body {
     width: 100%;
     height: 100vh;
+
     .page {
         background-image: url("../../../assets/BGVector.png");
         background-size: cover;
         background-repeat: no-repeat;
         min-height: 100vh;
         padding-top: 3vh;
+
         .cont {
             background-color: #fff;
             width: 98%;
@@ -14,6 +16,7 @@
             margin-left: auto;
             margin-top: auto;
             border-radius: 10px 0 0 0;
+
             .right {
                 background-color: #F2EDA233;
             }

@@ -17,7 +17,7 @@ export default function Myshelf() {
             <li><NavLink to={"/myshelf/articlesandjournals"} style={({ isActive }) => { return isActive ? { color: blackColor } : {}; }} className='px-5 text-[#868686] transition-all hover:text-black'>Articles & Journals</NavLink></li>
             <li><NavLink to={"/shoppingcart"} style={({ isActive }) => { return isActive ? { color: blackColor } : {}; }} className='px-5 text-[#868686] transition-all hover:text-black'>Shopping Cart</NavLink></li>
           </ul>
-          <Outlet />
+          <Outlet/>
         </div>
       </div>
     </>

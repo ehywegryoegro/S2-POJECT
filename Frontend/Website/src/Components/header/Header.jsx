@@ -88,16 +88,18 @@ export default function Header(props) {
             };
         }, []);
     }
+    const [role,setRole] = useState("admin");
 
     return (
 
         <>
             <div className='global'>
 
-
                 <div className="header py-5 px-4 flex justify-between items-center relative">
                     <button onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}><FontAwesomeIcon icon={faBars} className='md:hidden text-3xl mb-1' /></button>
                     <div ref={showSideBarPhone} className="side-phone-bar show-bar absolute bg-white w-full left-0 text-center">
+                        {role == "user" ?
+                        <div>
                         <ul className='mt-10'>
 
                             <Link to={"/"} onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}>
@@ -130,6 +132,39 @@ export default function Header(props) {
                                 </li >
                             </Link>
                         </ul >
+                        </div>
+
+                        :
+
+                        <div>
+                        <ul className='mt-10'>
+
+                            <Link to={"/admin"} onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}>
+                                <li className='py-4 font-bold cursor-pointer hover:text-[#d8ba66]'>
+                                    Dashboard
+                                </li>
+                            </Link>
+
+                            <Link to={"/admin"} onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}>
+                                <li className='py-4 font-bold cursor-pointer hover:text-[#d8ba66]'>
+                                    Books
+                                </li>
+                            </Link>
+
+                            <Link to={"/admin"} onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}>
+                                <li className='py-4 font-bold cursor-pointer hover:text-[#d8ba66]'>
+                                    Users
+                                </li>
+                            </Link>
+
+                            <Link to={"/admin"} onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}>
+                                <li className='py-4 font-bold cursor-pointer hover:text-[#d8ba66]'>
+                                    Orders
+                                </li>
+                            </Link >
+                        </ul >
+                        </div>}
+                        
                     </div >
                     <div className="search hidden sm:block">
                         <form className="max-w-lg">

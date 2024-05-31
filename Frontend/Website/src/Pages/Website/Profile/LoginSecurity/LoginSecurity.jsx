@@ -7,7 +7,7 @@ export default function LoginSecurity() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-    >
+      >
         <div className="form">
           <form>
             <div className="grid gap-6 mt-16 mb-8 grid-cols-1 md:grid-cols-1">
