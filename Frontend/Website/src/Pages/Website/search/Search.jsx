@@ -6,20 +6,27 @@ import axios from 'axios'
 import { useLocation } from 'react-router-dom';
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { BiErrorCircle } from "react-icons/bi";
+import { IoCheckboxOutline } from "react-icons/io5";
+import { AiOutlineCloseSquare } from "react-icons/ai";
+
+
+
+
 
 export default function Search() {
     const location = useLocation();
     const searchResults = location.state?.searchResults || [];
-    console.log(searchResults)
+    const [isAuth , setIsAuth] = useState(false)
+   
     const [favoriteBooks, setFavoriteBooks] = useState([]);
     useEffect(() => {
-
-      
         const fetchFavoriteBooks = async () => {
           try {
               const response = await axios.get('http://localhost:4000/favourite', { withCredentials: true });
               setFavoriteBooks(response.data.data.map(book => book.id));
           } catch (error) {
+            setIsAuth(true)
               console.error('Error fetching favorite books:', error);
           }
       };
@@ -28,10 +35,46 @@ export default function Search() {
         fetchFavoriteBooks();
 
     }, []);
-
+    function handleClick(bookId) {
+      
+      axios.post("http://localhost:4000/favourite/addToFavourite", {bookId},{ withCredentials: true })
+          .then(response => {
+              if (response.status === 201)
+               {
+                setFavoriteBooks(prevState => [...prevState, bookId]);
+                  console.log('added successfully');
+              }
+               
+          })
+          .catch(error => {
+            if(response.status === 401) {
+              setIsAuth(true)
+               console.error('Failed to delete');
+           }
+              console.error('Error:', error);
+          });
+  }
+  function handleDelete(id) {
+        
+    axios.delete(`http://localhost:4000/favourite/${id}`, { withCredentials: true })
+        .then(response => {
+            if (response.status === 200) {
+                setFavoriteBooks(prevState => prevState.filter(bookId => bookId !== id));
+               
+                console.log('deleted successfully');
+            } else {
+                
+                console.error('Failed to delete');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });}
   return (
     <>
+    {isAuth && <div className=' flex justify-center items-center mt-2'><p className='bg-off-white shadow h-9 flex justify-center items-center rounded px-2'><BiErrorCircle className='mr-1' />You do not have an account</p></div>}
       <div className="search-header flex text-md font-medium mx-7 mt-14">
+        
         <span className="header-title ml-20">Title</span>
         <span className="header-title ml-24">Ratings</span>
         <span className="header-title ml-6">Category</span>
@@ -67,12 +110,13 @@ export default function Search() {
         <div className="m-4 flex flex-row justify-between box-border">
           <div className="flex flex-col items-center box-border">
             <div className="flex flex-row my-2 mt-4 box-border">
-            <img  alt="" className="w-3.5 h-3.5"/>
-            <span className="break-words font-['Inter'] font-normal text-sm text-[#4D4D4D] ml-2">Hard Copy</span>
+            
+            {book.hard_copy ?<IoCheckboxOutline style={{ color: '#22c55e' }} className="w-6  mt-1 h-6 " /> : <AiOutlineCloseSquare style={{ color: 'red' }} className="w-6 mt-1 h-6" />}
+            <span className="break-words font-['Inter'] font-normal text-sm text-[#4D4D4D] mt-1 ml-2">Hard Copy</span>
             </div>
             <div className="flex flex-row box-border mr-5">
-            <img  alt="" className="w-3.5 h-3.5"/>
-              <span className="break-words font-['Inter'] font-normal text-sm text-[#4D4D4D] ml-2">E-Book</span>
+            {book.ebook ?<IoCheckboxOutline style={{ color: '#22c55e' }} className="w-6 mt-1 h-6" /> : <AiOutlineCloseSquare style={{ color: 'red' }} className="w-6 mt-1 h-6" />}
+              <span className="break-words font-['Inter'] font-normal text-sm text-[#4D4D4D] mt-2 ml-2">E-Book</span>
             </div>
           </div>
           <div className="mt-6 ml-10 justify-center box-border">
@@ -83,15 +127,15 @@ export default function Search() {
         </div>
         <div className="m-4 flex flex-row justify-between box-border">
           <div className="m-2 flex flex-row justify-center mt-8 mr-8 h-8 box-border">
-          {favoriteBooks.includes(book.id) ? (
-        <FaHeart style={{ color: 'red' }} />
+          <button onClick={() =>favoriteBooks.includes(book.id) ? handleDelete(book.id) : handleClick(book.id)} >{favoriteBooks.includes(book.id) ? (
+        <FaHeart  style={{ color: 'red' }} />
     ) : (
         <FaRegHeart style={{ color: 'red' }}  />
-    )}
+    )}</button>
           </div>
           <div className="rounded-md border-black border-double relative flex flex-row justify-center box-border my-6">
             <span className="break-words font-['Inter'] font-normal text-sm text-[#F76B56]">
-            <NavLink to={"/admin"}>
+            <NavLink to={`/bookpreview/${book.id}`}>
               <button className='bg-white text-orange-600 py-1 px-4 rounded-md border-solid border border-orange-600'>Preview</button>
             </NavLink>
             </span>

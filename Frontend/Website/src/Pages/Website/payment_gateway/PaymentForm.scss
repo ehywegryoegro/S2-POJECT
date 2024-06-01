@@ -41,6 +41,28 @@
   
 
 }
+.payment-form .close{
+  
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.payment-form .icon{
+  color: #e4dada;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+.payment-form .icon:hover{
+  width: 45px;
+  height: 45px;
+  color: #bfb3ae;
+}
 .payment-form .card-image img{
   border-radius: 6px;
 }

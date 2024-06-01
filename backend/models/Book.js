@@ -128,7 +128,7 @@ class BookModel{
     
 
             console.log(`Current date: ${new Date().toISOString()}`);
-            console.log(`Fetching books created after: ${formattedDate}`);
+            
     
 
             const query = 'SELECT * FROM book WHERE created_at >= ? ORDER BY RAND() LIMIT 10';
@@ -141,7 +141,7 @@ class BookModel{
                 } else {
                     
                     console.log(`Number of books found: ${results.length}`);
-                    console.log('Results:', results);
+                    
                     resolve(results.length > 0 ? results : null);
                 }
             });

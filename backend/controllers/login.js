@@ -15,21 +15,22 @@ const login = async (req, res) => {
 
     try {
         db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+
             if (err) {
+                console.log("111")
                 return res.status(500).json({ status: "error", error: "Internal server error" });
-            }else{
-                console.log("error1")
             }
 
             if (results.length === 0 || !await bcrypt.compare(password, results[0].password)) {
+                console.log("222")
                 return res.status(401).json({ status: "error", error: "Incorrect email or password" });
-            }else{
-                console.log("error2")
+
             }
             if (!results[0].otp_verified) {
                 return res.status(403).json({ status: "error", error: "your account is not activated" });
             }else{
                 console.log("error3")
+                console.log(results[0].otp_verified)
             }
             const token = jwt.sign({ id: results[0].id, role: results[0].role }, process.env.JWT_SECRET, {
                 expiresIn: process.env.JWT_EXPIRES
@@ -42,7 +43,6 @@ const login = async (req, res) => {
                 
             }
 
-                console.log(token , cookieOptions)
             
             return res.status(200).cookie("userSave", token, cookieOptions).json({ 
                 status: "success", 

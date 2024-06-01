@@ -84,32 +84,58 @@ class BookController{
 
 
 
+    // static async readFileBookById(req, res) {
+    //     try {
+    //         const bookId = req.params.id;
+    //         const book = await bookModel.findById(bookId);
+
+    //         if (!book) {
+    //             return res.status(404).send('Book not found');
+    //         }
+            
+    //         const filePath ="http://localhost:4000/upload/books/c.v.pdf";
+    //         console.log(filePath)
+    //         console.log(fs.existsSync(filePath))
+    //         if (!fs.existsSync(filePath)) {
+    //             return res.status(404).send('Book file not found');
+    //         }
+
+    //         const fileStream = fs.createReadStream(filePath);
+    //         res.setHeader('Content-Type', 'application/pdf');
+    //         fileStream.pipe(res);
+    //     } catch (error) {
+    //         console.error('Error fetching book:', error);
+    //         res.status(500).send('Internal Server Error');
+    //     }
+    // }
+
+
     static async readFileBookById(req, res) {
-        try {
-            const bookId = req.params.id;
-            const book = await bookModel.findById(bookId);
-
-            if (!book) {
-                return res.status(404).send('Book not found');
-            }
-            
-            const filePath = path.join(__dirname, '..', 'upload', 'books', book.filename);
-            
-            if (!fs.existsSync(filePath)) {
-                return res.status(404).send('Book file not found');
-            }
-
-            const fileStream = fs.createReadStream(filePath);
-            res.setHeader('Content-Type', 'application/pdf');
-            fileStream.pipe(res);
-        } catch (error) {
-            console.error('Error fetching book:', error);
-            res.status(500).send('Internal Server Error');
-        }
-    }
-
-
-
+      try {
+          const bookId = req.params.id;
+          const book = await bookModel.findById(bookId);
+  
+          if (!book) {
+              return res.status(404).send('Book not found');
+          }
+          
+          const filePath = "http://localhost:4000/upload/books/c.v.pdf"; // Assuming this is the correct URL to the PDF file
+          console.log(filePath);
+  
+          const fileStream = fs.createReadStream(filePath);
+          fileStream.on('error', (error) => {
+              console.error('Error reading file:', error);
+              res.status(404).send('Book file not found');
+          });
+          
+          res.setHeader('Content-Type', 'application/pdf');
+          fileStream.pipe(res);
+      } catch (error) {
+          console.error('Error fetching book:', error);
+          res.status(500).send('Internal Server Error');
+      }
+  }
+  
 
 static uploadBook(req, res) {
   const storage = multer.diskStorage({

@@ -5,9 +5,24 @@ import axios from 'axios';
 const visa = require("../../../assets/visacard.png")
 import { CardNumberElement, CardExpiryElement, CardCvcElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js'
-
+import { IoMdClose } from "react-icons/io";
+import { motion } from 'framer-motion';
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { CiCircleCheck } from "react-icons/ci";
+import {  AnimatePresence } from 'framer-motion';
 const stripePromise = loadStripe('pk_test_51P7It6RvUoIKTFiLEIooBA1WdiXmYnaySktQGZjqUhs5uYFUSQoZzMLO6uXWpgQtyKx4FxjRmAwlGo1LE19iCydg00gnRmS4ll');
-const PaymentForm = ({ total, onClose, onPaymentSuccess }) => {
+
+
+
+const PaymentForm = ({ total, onClose , ID}) => {
+  
+  useEffect(() => {
+    console.log(ID)
+  }, []);
+
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [errorMessage2, setErrorMessage2] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
    
@@ -36,26 +51,33 @@ const PaymentForm = ({ total, onClose, onPaymentSuccess }) => {
     
         if (error) {
           console.error(error);
+          setErrorMessage2(true);
+          setTimeout(() => setErrorMessage2(false), 3000);
         } else {
           try {
             const response = await axios.post('http://localhost:4000/cart/purchase', {
               total,
               stripeTokenId: paymentMethod.id,
-            });
+              ids : ID,
+              
+              
+            },{ withCredentials: true });
     
             const paymentResponse = response.data;
     
             if (response.status === 200) {
                 console.log(paymentResponse )
                 console.log("payment succeed")
-              
+                setSuccessMessage(true)
+                setTimeout(() => setSuccessMessage(false), 3000);
              
             } else {
               console.log("payment failed")
             }
           } catch (err) {
             console.error('Payment error:', err);
-            alert('Payment failed');
+            setErrorMessage(true);
+          setTimeout(() => setErrorMessage(false), 3000);
           }
         }
       };
@@ -78,8 +100,8 @@ const PaymentForm = ({ total, onClose, onPaymentSuccess }) => {
       };
   return (
     <div className="payment-form-container">
-      <div className="payment-form">
-        
+      <div className="payment-form ">
+        <button onClick={onClose} className='close'><IoMdClose className='icon' /></button>
         <h2>PAYMENT</h2>
         <div className="card-image">
           <img src={visa} alt="Visa Card" />
@@ -120,7 +142,51 @@ const PaymentForm = ({ total, onClose, onPaymentSuccess }) => {
           </div>
           
         </form>
-        
+        <AnimatePresence>
+              {errorMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className='w-64 ml-14 flex  justify-center items-center rounded bg-red-200 h-9 mt-3'
+                >
+                  <p className='text-sm text-red-600 w-full flex items-center justify-items-start ml-2'>
+                    <IoIosCloseCircleOutline className='mr-1' /> Payment failed
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <AnimatePresence>
+              {errorMessage2 && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className='w-64 ml-14 flex  justify-center items-center rounded bg-red-200 h-9 mt-3'
+                >
+                  <p className='text-sm text-red-600 w-full flex items-center justify-items-start ml-2'>
+                    <IoIosCloseCircleOutline className='mr-1' /> Invalid card information
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+        <AnimatePresence>
+              {successMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className='w-64 flex ml-14 justify-center items-center rounded bg-green-200 h-9 mt-3'
+                >
+                  <p className='text-sm text-green-600 w-full flex items-center justify-items-start ml-2'>
+                  <CiCircleCheck className="mr-1" /> Payment succeed
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
       </div>
     </div>
 

@@ -16,7 +16,15 @@ class AuthModel {
 
 
 
-
+    static async updateOtp(email,otp) {
+        try {
+            await db.promise().query('UPDATE users SET otp = ? WHERE email = ?', [otp, email]);
+            return true; // Indicate success
+        } catch (error) {
+            console.error('Error updating password:', error);
+            throw new Error('Internal server error');
+        }
+    }
 
 
 

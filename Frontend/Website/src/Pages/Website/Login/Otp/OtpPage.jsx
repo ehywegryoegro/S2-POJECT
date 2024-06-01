@@ -10,11 +10,26 @@ function OtpPage() {
     const handleOtpChange = (e) => {
         setOtp(e.target.value);
     };
-
+    const handleResend = async(e)=>{
+        e.preventDefault();
+        try{
+            const email = localStorage.getItem('userEmail');
+            console.log(email)
+            if(!email){
+                console.log("no email in storege")
+            }
+            const response = await axios.post('http://localhost:4000/auth/resend', { email , otp });
+            console.log("otp resended")
+        }catch(error) {
+                console.error('Error sending OTP:', error);
+                setError('Failed to verify OTP. Please try again later.');
+        }
+    }
     
     const handleVerify = async (e) => {
         e.preventDefault();
         try {
+
             console.log(otp)
             const response = await axios.post('http://localhost:4000/auth/otpVerification', { otp });
             console.log(response.data);
@@ -29,9 +44,7 @@ function OtpPage() {
             setError('Failed to verify OTP. Please try again later.');
         }
     };
-    const handleResend = () => {
-        // Implement resend functionality if needed
-    };
+    
 
     return (
         <>
@@ -60,9 +73,9 @@ function OtpPage() {
                         </form>
                         <div className="bottom">
                             <p className="resend">
-                                Not yet received? <a href="#">Resend</a>
+                                Not yet received? <a onClick={handleResend} href="/OTP">Resend</a>
                             </p>
-                            <a className="resend1" href='./login'>Back</a>
+                            <a className="resend1" href='./register'>Back</a>
                         </div>
                     </div>
                 </div>

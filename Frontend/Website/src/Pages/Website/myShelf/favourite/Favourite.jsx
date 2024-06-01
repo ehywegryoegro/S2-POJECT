@@ -56,7 +56,7 @@ return(
                             <div className={`flex justify-center items-center h-5 w-5 ${book.ebook ? 'bg-green-600' : 'bg-gray-400'} absolute right-1 top-1 rounded-xl`}>
                                 <p className="text-xs text-white font-bold">E</p>
                             </div>
-                            <a href={`/${book.id}`}>
+                            <NavLink to={`/bookpreview/${book.id}`}>
                                 <img
                                     src={book.cover}
                                     alt={`book-${book.id}`}
@@ -69,7 +69,7 @@ return(
                                         <p className="text-xs font-medium text-black cursor-auto my-1">4.5<span className="text-xs text-gray-600 font-light cursor-auto">/5</span></p>
                                     </div>
                                 </div>
-                            </a>
+                                </NavLink>
                             <div className="flex gap-1 justify-around">
                             <button className='text-black text-md px-2 py-1 bg-gray-300 rounded-lg text-xs'>Add to Cart</button>
                             <button onClick={() =>{ handleDelete(book.id)}} className='text-black text-md px-2 py-1 bg-gray-300 rounded-lg'><FaHeart style={{ color: 'red' }}  /></button>

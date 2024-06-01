@@ -24,6 +24,27 @@ class OrderModel{
             throw new Error('Error updating order status');
         }
     }
+    static async updatePaidOrder(userId, bookId) {
+        try {
+            const result = await new Promise((resolve, reject) => {
+                database.query('UPDATE orders SET isPaid = 1  WHERE user_id = ? AND book_id = ?', [userId, bookId], (error, result) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (result.affectedRows === 0) {
+                            resolve(null);
+                        } else {
+                            resolve(true); // Return true if the order status was updated successfully
+                        }
+                    }
+                });
+            });
+            
+        } catch (error) {
+            console.error('Error updating order status:', error);
+            throw new Error('Error updating order status');
+        }
+    }
 
 
     static async createOrder(userId, bookId,totalPrice) {
@@ -97,6 +118,27 @@ class OrderModel{
     try {
         const order = await new Promise((resolve, reject) => {
             database.query('SELECT * FROM orders WHERE user_id = ? AND book_id = ?', [userId , bookId], (error, results) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    if (results.length > 0) {
+                        resolve(results[0]); // Return the first (and only) order found
+                    } else {
+                        resolve(null); // Return null if no order was found
+                    }
+                }
+            });
+        });
+        return order;
+    } catch (error) {
+        console.error('Error fetching order by ID:', error);
+        throw new Error('Error fetching order by ID');
+    }
+}
+static async getPaidOrder() {
+    try {
+        const order = await new Promise((resolve, reject) => {
+            database.query('SELECT * FROM orders WHERE ispaid = 1', (error, results) => {
                 if (error) {
                     reject(error);
                 } else {

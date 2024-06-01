@@ -59,14 +59,14 @@ class OrderController{
 
             
             const totalPrice = bookPrice ;
-             // Call the createOrder method of the OrderModel asynchronously
+             
             const success = await OrderModel.createOrder(req.user[0].id, bookId, totalPrice);
 
             if (success) {
-               // If successful, send a success response
+               
                res.status(201).json({ success: true, orderId: success });
             } else {
-               // If failed, send a failure response
+             
                res.status(400).send("Failed to add order");
             }
 

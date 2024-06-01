@@ -7,7 +7,7 @@ const { promisify } = require("util");
 
 
 const loggedin = async (req, res, next) => {
-  
+  console.log(req.cookies.userSave)
   
     if (req.cookies.userSave) {
         try {

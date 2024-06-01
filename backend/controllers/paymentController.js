@@ -1,13 +1,20 @@
 
-
+const OrderModel = require("../models/Orders");
 const stripe = require('stripe')
 const Stripe = stripe('sk_test_51P7It6RvUoIKTFiLsl31LHPzTZuKHBHZC27NIVj2ao2B0391LR0336aEDeKhhnLrQlfxV95QuUUvNIhINrDacVlM00ugXozuhk')
 
 exports.processPayment = async (req, res) => {
   try {
-
-    const { total, stripeTokenId } = req.body;
-
+    console.log("we are here now")
+    if (!req.user || !req.user[0].id) {
+      console.log("we are here now 2")
+      console.log("unauthorized")
+      return res.status(401).json({ status: "error", error: "Unauthorized" });
+  }
+    const { total, stripeTokenId , ids } = req.body;
+  console.log(total)
+  console.log(stripeTokenId)
+  console.log(ids)
     const amount = Math.round(total * 100);
    
     const paymentIntent = await Stripe.paymentIntents.create({
@@ -18,7 +25,7 @@ exports.processPayment = async (req, res) => {
       confirmation_method: 'manual',
       confirm: true,
     });
-
+    console.log("we are here now 3")
     // const charge = await Stripe.charges.create({
     //   amount: total,
     //   source: stripeTokenId,
@@ -26,6 +33,9 @@ exports.processPayment = async (req, res) => {
 
     // });
     console.log('Payment Intent:', paymentIntent);
+    for(let i=0 ; i<ids.length ; i++){
+      OrderModel.updatePaidOrder(req.user[0].id , ids[i])
+    }
 
     res.json({ message: 'Successfully processed payment', paymentIntent });
     // console.log('Charge Successful:', charge);

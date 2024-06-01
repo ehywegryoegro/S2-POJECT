@@ -154,12 +154,14 @@ import "./Cart.scss"; // Make sure to create and import the corresponding SCSS f
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
+
 const stripePromise = loadStripe('pk_test_51P7It6RvUoIKTFiLEIooBA1WdiXmYnaySktQGZjqUhs5uYFUSQoZzMLO6uXWpgQtyKx4FxjRmAwlGo1LE19iCydg00gnRmS4ll');
 export default function Cart() {
   const [books, setBooks] = useState([]);
+  const [ids, setIds] = useState([]);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-
+  const [showClose ,setShowClose] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -173,11 +175,24 @@ export default function Cart() {
     fetchData();
   }, []);
   const calculateTotalPrice = (books) => {
+    
     let total=0;
-   for (let i=0 ; i<=books.length ; i++){
+   for (let i=0 ; i<=books.length-1 ; i++){
+    console.log(books[i].price )
+      
       total = total  + books[i].price
    }
+   console.log(total)
     setTotalPrice(total);
+    
+   
+  };
+  const getIds =()=>{
+    const allIds = books.map(book => book.id);
+    setIds(allIds);
+  }
+  const handlePayNow = (id) => {
+    setIds([id]);
   };
   
   function handleDelete(id) {
@@ -200,11 +215,11 @@ export default function Cart() {
     <>
       {showPaymentForm && (
         <Elements stripe={stripePromise}>
-        <PaymentForm total={totalPrice}  onClose={() => setShowPaymentForm(false)} />
+        <PaymentForm total={totalPrice}  onClose={() => setShowPaymentForm(false)} ID={ids} />
         </Elements>
       )}
       <div className={`cart-container ${showPaymentForm ? "dimmed" : ""}`}>
-      
+
         <div className="search-header justify-between align-center flex text-md font-medium mx-5 mt-14">
         
           <span className="header-title ml-24">Title</span>
@@ -214,8 +229,8 @@ export default function Cart() {
           <span className="header-title mr-72">
             <button
               className="bg-orange-600 text-white py-1 px-6 rounded-md border-solid border border-orange-600"
-              onClick={() =>{ calculateTotalPrice(books),
-                 setShowPaymentForm(true)}}
+              onClick={() =>{ calculateTotalPrice(books),getIds(),
+                 setShowPaymentForm(true),setShowClose(true)}}
             >
               Pay All
             </button>
@@ -251,12 +266,13 @@ export default function Cart() {
                 <p>{book.price}</p>
               </div>
             </div>
+            
             <div className="m-4 flex flex-row justify-between box-border">
               <div className="rounded-md border-black border-double relative flex flex-row justify-center box-border my-6 ml-36">
                 <span className="break-words font-['Inter'] font-normal text-sm text-[#F76B56]">
                   <button
                     className="bg-orange-600 text-white py-1 px-4 rounded-md border-solid border border-orange-600"
-                    onClick={() => { setTotalPrice(book.price), setShowPaymentForm(true)}}
+                    onClick={() => { setTotalPrice(book.price), setShowPaymentForm(true),setShowClose(true) , handlePayNow(book.id)}}
                   >
                     Pay Now
                   </button>

@@ -5,7 +5,7 @@ const ordersController = require("../controllers/OrdersController")
 const loggedin = require("../controllers/loggedin")
 
 
-router.post('/purchase', paymentController.processPayment);
+router.post('/purchase',loggedin , paymentController.processPayment);
 router.post("/addToCart" , loggedin , ordersController.createOrder )
 router.get("/" , loggedin , ordersController.getAllOrders )
 router.delete("/:id" , loggedin , ordersController.deleteOrder)

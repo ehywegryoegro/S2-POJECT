@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import './Register.scss';
 import axios from 'axios';
 
 function RegisterPage() {
-
+  useEffect(() => {
+    console.log('Testing localStorage');
+    localStorage.setItem('testKey', 'testValue');
+    console.log('Stored testKey:', localStorage.getItem('testKey'));
+  }, []);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -23,7 +27,9 @@ const handleSubmit = async (event) => {
     try {
       const response = await axios.post('http://localhost:4000/auth/register', formData);
       console.log(response.data); 
+      localStorage.setItem('userEmail', formData.email);
       if(response.status===200){
+        
         window.location.href = '/otp';
         alert('Registration successful! Please verify your account using the OTP sent to your email.');
       }
@@ -54,10 +60,7 @@ const handleSubmit = async (event) => {
     window.location.href = '/login';
   };
 
-  const handleButton = () => {
-    window.location.href = '/otp';
-  }
-
+  
   return (
     <>
       <div className="box">
@@ -94,7 +97,7 @@ const handleSubmit = async (event) => {
             </div>
           </div>
           <div className='w-full'>
-            <button onClick={handleButton} className='login-btn text-xs w-full' type='submit'>Sign up</button>
+            <button className='login-btn text-xs w-full' type='submit'>Sign up</button>
           </div>
         </div>
         </form>

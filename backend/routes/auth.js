@@ -13,7 +13,7 @@ const forgotPassword = require("../controllers/forgotPassword")
 const updatePassword = require("../controllers/newPassword")
 const UserController = require("../controllers/UserController")
 const isUser = require("../controllers/isUser")
-
+const ResendOtp = require("../controllers/resend")
 
 
 
@@ -28,7 +28,7 @@ router.get('/admin', loggedin, isAdmin, (req, res) => {
  router.post("/otpVerification",verifyOTP )
  router.post("/login",login)
  router.get("/logout",logout)
- 
+ router.post("/resend", ResendOtp)
  router.post("/updateProfile",loggedin ,updateProfile )
  router.post("/forgotPassword" , forgotPassword );
  router.post("/verifyEmail",verify_email)

@@ -31,9 +31,11 @@ const sendOTP = async (email, otp) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log('OTP sent successfully to', email);
+    console.log("otp sent ")
+    return true;
   } catch (error) {
     console.error('Failed to send OTP:', error);
+    return false;
   }
 };
 
@@ -50,17 +52,22 @@ const register = async (req, res) => {
 
   try {
     const otp = generateOTP();
-    await sendOTP(email, otp);
+    const status = await sendOTP(email, otp);
+    console.log(status)
     console.log(otp);
 
     // Save user registration details in the database
+    if(status){
     const success = await AuthModel.registerUser(email, password, otp);
-
     if (success) {
       return res.status(200).json({ status: "success", message: "Registration successful. Please verify your account using the OTP sent to your email." });
     } else {
+      return res.status(500).json({ status: "error", error: "Failed to register user 2" });
+    }
+    }else{
       return res.status(500).json({ status: "error", error: "Failed to register user" });
     }
+    
   } catch (error) {
     console.error('Error registering user:', error);
     return res.status(500).json({ status: "error", error: "Internal server error" });

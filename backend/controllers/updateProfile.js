@@ -6,6 +6,7 @@ const { promisify } = require("util");
 const path = require('path');
 const multer = require('multer');
 const UserProfileModel = require("../models/UserProfileModel");
+const UserModel = require("../models/User")
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       const uploadPath = path.join(__dirname,'..', 'upload', 'users'); 
@@ -41,8 +42,9 @@ const updateProfile = async (req, res) => {
         }
 
         await UserProfileModel.updateProfile(req.user[0].id, username, email, phoneNumber , bio , profileImgPath);
+        const updatedUser = await UserModel.findById(req.user[0].id);
 
-        return res.status(200).json({ status: "success", message: "Profile updated successfully" });
+        return res.status(200).json({ status: "success", message: "Profile updated successfully", data: updatedUser });
     } catch (error) {
         console.error("Error updating profile:", error.message);
         return res.status(500).json({ status: "error", error: "Internal server error" });

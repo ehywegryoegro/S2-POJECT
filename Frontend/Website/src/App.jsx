@@ -27,7 +27,7 @@ import PaymentGateway from './Pages/Website/payment_gateway/payment';
 import AdminHomePage from './Pages/Website/adminHomePage/AdminHomePage';
 import AdminHomeBooks from './Pages/Website/adminHomeBooks/AdminHomeBooks';
 // import AddBook from './Pages/Website/addBook/AddBook';
-
+import BookRead from './Pages/Website/bookPreview/Read';
 
 
 
@@ -64,7 +64,7 @@ function App() {
           <Route path='support' element={<Support />} />
           <Route path='termsandconditions' element={<TermsAndConditions />} />
           
-
+          <Route path='Read/:id' element={<BookRead />} />
           
 
         </Route>

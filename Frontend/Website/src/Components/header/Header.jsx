@@ -158,18 +158,35 @@ export default function Header(props) {
     const navigate = useNavigate()
     const [searchResults, setSearchResults] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-  
+    const fetchSearchResults = debounce(async (query) => {
+        if (query.trim() === "") {
+            setSearchResults([]);
+            
+            return;
+        }
+
+        try {
+            const response = await axios.get(`http://localhost:4000/books/search?term=${query}`, { withCredentials: true });
+            setSearchResults(response.data);
+            navigate('/search', { state: { searchResults: searchResults } });
+        } catch (error) {
+            console.error("Error fetching search results:", error.message);
+        }
+    }, 300);
+
+    useEffect(() => {
+        fetchSearchResults(searchQuery);
+    }, [searchQuery]);
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
         const response = await axios.get(`http://localhost:4000/books/search?term=${searchQuery }`,{ withCredentials: true });
         setSearchResults(response.data);
-         navigate('/search', { state: { searchResults: searchResults } });
+        navigate('/search', { state: { searchResults: searchResults } });
       } catch (error) {
         console.error("Error fetching search results:", error.message);
       }
     };
-   
     return (
         <>
             <div className="header py-5 px-4 flex justify-between items-center relative ">
@@ -182,19 +199,16 @@ export default function Header(props) {
                                 Home
                             </li>
                         </Link>
-
                         <Link to={"/search"} onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}>
                             <li className='py-4 font-bold cursor-pointer hover:text-[#d8ba66]'>
                                 Search
                             </li>
                         </Link>
-
                         <Link to={"/myshelf"} onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}>
                             <li className='py-4 font-bold cursor-pointer hover:text-[#d8ba66]'>
                                 MyShelf
                             </li>
                         </Link>
-
                         <Link to={"/about"} onClick={() => showSideBarPhone.current.classList.toggle("show-bar")}>
                             <li className='py-4 font-bold cursor-pointer hover:text-[#d8ba66]'>
                                 About
@@ -234,8 +248,9 @@ export default function Header(props) {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="relative">
-                                <input value={searchQuery} onChange={(e) => onChange={setSearchQuery}} type="search" id="search-dropdown" className="block p-1 w-full outline-none z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300" placeholder="Search" required />
+                           {/* search input*/ }
+                            <div className="relative ">
+                                <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="search" id="search-dropdown" className="block p-1 w-full outline-none z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300" placeholder="Search" required />
                                 <button type="submit" className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-whit rounded-e-lg">
                                     <svg className="w-4 h-4 pb-1" style={{ color: primaryColor }} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -243,12 +258,10 @@ export default function Header(props) {
                                     <span className="sr-only">Search</span>
                                 </button>
                             </div>
+                           
                         </div>
                     </form>
                 </div>
-
-
-                {/* langage menu */}
                 <div className="lang relative">
                     <button onClick={() => showLangBar.current.classList.toggle('hidden')} id="dropdownDefaultButton" data-dropdown-toggle="dropdownln" className="text-black bg-white focus:outline-none font-normal global-radius text-sm px-3 py-1 text-center inline-flex items-center" type="button"><FontAwesomeIcon icon={faLanguage} className='pr-2' style={{ color: primaryColor }} />Lang<svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
@@ -267,8 +280,6 @@ export default function Header(props) {
                         </ul>
                     </div>
                 </div>
-
-
                 {
                     !isPhone && <div className="time flex items-center gap-2 lg:gap-10 bg-white py-1 px-4 global-radius">
                         <div className="hour flex items-center text-xs lg:text-sm">
@@ -281,9 +292,6 @@ export default function Header(props) {
                         </div>
                     </div>
                 }
-
-
-                {/* Profile menu */}
                 {hasAccount ? (<div className="myprofile relative">
                     <button style={{ width: "135px" }} onClick={() => showProfileBar.current.classList.toggle("hidden")} id="dropdownDefaultButton" data-dropdown-toggle="dropdowndpro" className="text-black text-sm font-normal justify-between bg-white focus:outline-none global-radius px-3 py-1 text-center inline-flex items-center" type="button">
                         <div className='flex items-center'>
